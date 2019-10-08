@@ -290,7 +290,7 @@ class Client extends AbstractClient implements ClientInterface
         $module = 'Candidates';
         $method = 'changeStatus';
 
-        if (!in_array($candidateStatus, array(
+        /*if (!in_array($candidateStatus, array(  // disabled check to allow custom statuses
             'New',
             'Waiting-for-Evaluation',
             'Qualified',
@@ -321,7 +321,7 @@ class Client extends AbstractClient implements ClientInterface
             'No-Show',
         ))) {
             throw new HttpApiException(sprintf('The new status "%s" is invalid!', $candidateStatus));
-        }
+        }*/
 
         $additionalParams['candidateIds']    = implode(',', $candidateIds);
         $additionalParams['candidateStatus'] = $candidateStatus;
