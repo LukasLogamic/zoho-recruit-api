@@ -17,12 +17,16 @@ class MessageResponseFormatter implements FormatterInterface
     public function formatter(array $data)
     {
         if (isset($data['data']['response']['result']['message'])) {
-            $data = $data['data']['response']['result']['message'];
+            //$data = $data['data']['response']['result']['message'];
+            $result['message'] = $data['data']['response']['result']['message'];
+            $result['id'] = $data['data']['response']['result']['recorddetail']['FL'][0]['content']; //return object with last ID not only message
         } else {
-            $data = $data['data']['response']['success']['message'];
+            //$data = $data['data']['response']['success']['message'];
+            $result['message'] = $data['data']['response']['result']['message'];
+            $result['id'] = $data['data']['response']['result']['recorddetail']['FL'][0]['content']; //return object with last ID not only message
         }
 
-        $this->data = trim($data);
+        $this->data = $result;
     }
 
     /**
